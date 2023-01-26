@@ -18,9 +18,18 @@ let weather = {
 
      displayWeather: function (data) {
           const { name } = data.location;
-          //const { icon, text } = data.condition; this is giving us undefined
+          const { icon, text } = data.current.condition; //woohoo nested objects
           const { temp_f, humidity, feelslike_f } = data.current;
-          console.log(name, temp_f, humidity, feelslike_f) //these are working
+          console.log(name, icon, text, temp_f, humidity, feelslike_f) //for testing
+          document.querySelector(".city").innerText = name;
+          document.querySelector(".icon").src = icon;
+          document.querySelector(".description").innerText = text;
+          document.querySelector(".temp").innerText = temp_f + "°F";
+          document.querySelector(".feels-like").innerText = "Feels like " + feelslike_f + "°";
+          document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
+
      }
+
+
 };
 
