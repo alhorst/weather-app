@@ -18,7 +18,7 @@ let weather = {
 
      displayWeather: function (data) {
           const { name } = data.location;
-          const { icon, text } = data.current.condition; //woohoo nested objects
+          const { icon, text } = data.current.condition; //nested objects
           const { temp_f, humidity, feelslike_f } = data.current;
           console.log(name, icon, text, temp_f, humidity, feelslike_f) //for testing
           document.querySelector(".city").innerText = name;
@@ -28,8 +28,12 @@ let weather = {
           document.querySelector(".feels-like").innerText = "Feels like " + feelslike_f + "°";
           document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
 
+     },
+     searchCity: function () {
+          this.getWeather(document.querySelector(".search-bar").value)
      }
-
-
 };
 
+document.querySelector(".search button").addEventListener("click", function () {
+     weather.searchCity();
+});
